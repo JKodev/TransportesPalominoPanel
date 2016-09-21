@@ -1,0 +1,80 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Vehículos
+{% endblock %}
+
+{% block content %}
+<div class="page-content-inner">
+    <div class="portlet light">
+        <div class="portlet-title">
+            <div class="caption">
+                <span class="caption-subject bold uppercase">Vehículos</span>
+            </div>
+            <div class="actions">
+                <a href="{% url 'main_vehicle_create' %}" class="btn green-jungle">
+                    <span class="fa fa-plus"></span>
+                    Nuevo
+                </a>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>Placa</th>
+                        <th>Modelo</th>
+                        <th>Marca</th>
+                        <th>Año</th>
+                        <th>Disponibilidad</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for object in object_list %}
+                    <tr>
+                        <td>
+                            {{ object.id }}
+                        </td>
+                        <td>
+                            {{ object.plaque }}
+                        </td>
+                        <td>
+                            {{ object.model }}
+                        </td>
+                        <td>
+                            {{ object.mark }}
+                        </td>
+                        <td>
+                            {{ object.year }}
+                        </td>
+                        <td>
+                            {% if object.Travel_Vehicle.count %}
+                                ocupado
+                            {% else %}
+                            disponible
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a href="{% url 'main_vehicle_update' object.id %}" class="btn blue-soft">
+                                <span class="fa fa-edit">
+                                </span>
+                                Editar
+                            </a>
+                            <a href="{% url 'main_vehicle_delete' object.id %}" class="btn red-flamingo">
+                                <span class="fa fa-trash">
+                                </span>
+                                Eliminar
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Eliminar Viaje
+{% endblock %}
+
+{% block content %}
+    <div class="page-content-inner">
+        <div class="portlet light">
+            <div class="portlet-title">
+                <div class="caption">
+                    <span class="caption-subject bold uppercase">Eliminar Viaje</span>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <p>¿Está seguro que desea eliminar el viaje del conductor <span
+                            class="uppercase bold">"{{ object.driver.first_name }} {{ object.driver.last_name }}"</span>
+                        en el vehículo de placa <span class="bold uppercase">"{{ object.vehicle.plaque }}"</span>?
+                    </p>
+                    <button type="submit" class="btn red-thunderbird">
+                        <span class="fa fa-trash"></span>
+                        Eliminar
+                    </button>
+                    <a href="{% url 'main_worker_list' %}" class="btn default">
+                        Cancelar
+                    </a>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

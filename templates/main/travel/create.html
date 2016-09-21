@@ -1,0 +1,232 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block style_components %}
+    <link href="{% static 'main/assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css' %}"
+          rel="stylesheet" type="text/css"/>
+{% endblock %}
+
+{% block title %}
+    Crear Nuevo Viaje
+{% endblock %}
+
+{% block content %}
+    <div class="page-content-inner">
+        <div class="portlet light">
+            <div class="portlet-title">
+                <div class="caption">
+                    <span class="caption-subject bold uppercase">Nuevo Viaje</span>
+                </div>
+            </div>
+            <div class="portlet-body form">
+                <form action="" method="post" role="form" class="form-horizontal margin-bottom-40">
+                    {% csrf_token %}
+                    <div class="form-body">
+                        <div class="form-group form-md-line-input {% if form.origin.errors %}has-error{% endif %}">
+                            <label class="col-md-2 control-label">Origen</label>
+                            <div class="col-md-4">
+                                <div class="input-icon">
+                                    {{ form.origin }}
+                                    <div class="form-control-focus"></div>
+                                    <i class="fa fa-sign-out"></i>
+                                </div>
+                            </div>
+                            <div class="col-md-1">
+                                <i class="validate fa"></i>
+                            </div>
+                            <div class="col-md-5">
+                                {{ form.origin.errors }}
+                            </div>
+                        </div>
+                        <div class="form-group form-md-line-input {% if form.destination.errors %}has-error{% endif %}">
+                            <label class="col-md-2 control-label">Destino</label>
+                            <div class="col-md-4">
+                                <div class="input-icon">
+                                    {{ form.destination }}
+                                    <div class="form-control-focus"></div>
+                                    <i class="fa fa-sign-in"></i>
+                                </div>
+                            </div>
+                            <div class="col-md-1">
+                                <i class="validate fa"></i>
+                            </div>
+                            <div class="col-md-5">
+                                {{ form.destination.errors }}
+                            </div>
+                        </div>
+                        <div class="form-group form-md-line-input {% if form.driver.errors %}has-error{% endif %}">
+                            <label class="col-md-2 control-label">Conductor</label>
+                            <div class="col-md-4">
+                                <div class="input-icon">
+                                    {{ form.driver }}
+                                    <div class="form-control-focus"></div>
+                                    <i class="fa fa-user"></i>
+                                </div>
+                            </div>
+                            <div class="col-md-1">
+                                <i class="validate fa"></i>
+                            </div>
+                            <div class="col-md-5">
+                                {{ form.driver.errors }}
+                            </div>
+                        </div>
+                        <div class="form-group form-md-line-input {% if form.vehicle.errors %}has-error{% endif %}">
+                            <label class="col-md-2 control-label">Vehículo</label>
+                            <div class="col-md-4">
+                                <div class="input-icon">
+                                    {{ form.vehicle }}
+                                    <div class="form-control-focus"></div>
+                                    <i class="fa fa-truck"></i>
+                                </div>
+                            </div>
+                            <div class="col-md-1">
+                                <i class="validate fa"></i>
+                            </div>
+                            <div class="col-md-5">
+                                {{ form.vehicle.errors }}
+                            </div>
+                        </div>
+                        <div class="form-group form-md-line-input {% if form.departure_date.errors %}has-error{% endif %}">
+                            <label class="col-md-2 control-label">Fecha de Salida</label>
+                            <div class="col-md-4">
+                                <div class="input-icon">
+                                    {{ form.departure_date }}
+                                    <div class="form-control-focus"></div>
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                            </div>
+                            <div class="col-md-1">
+                                <i class="validate fa"></i>
+                            </div>
+                            <div class="col-md-5">
+                                {{ form.departure_date.errors }}
+                            </div>
+                        </div>
+                        <div class="form-group form-md-line-input {% if form.arrival_date.errors %}has-error{% endif %}">
+                            <label class="col-md-2 control-label">Fecha de Llegada</label>
+                            <div class="col-md-4">
+                                <div class="input-icon">
+                                    {{ form.arrival_date }}
+                                    <div class="form-control-focus"></div>
+                                    <i class="fa fa-calendar-check-o"></i>
+                                </div>
+                            </div>
+                            <div class="col-md-1">
+                                <i class="validate fa"></i>
+                            </div>
+                            <div class="col-md-5">
+                                {{ form.arrival_date.errors }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <div class="row">
+                            <div class="col-md-offset-6 col-md-6">
+                                <button type="submit" class="btn green-jungle">
+                                    <span class="fa fa-save"></span>
+                                    Guardar
+                                </button>
+                                <a href="{% url 'main_travel_list' %}" class="btn default">
+                                    Cancelar
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script_components %}
+    <script src="{% static 'main/assets/global/plugins/moment.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'main/assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js' %}"
+            type="text/javascript"></script>
+    <script src="{% static 'main/assets/global/plugins/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.es.js' %}"
+            type="text/javascript"></script>
+    <script src="{% static 'main/assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js' %}"
+            type="text/javascript"></script>
+    <script src="{% static 'main/assets/global/plugins/jquery-inputmask/inputmask/inputmask.date.extensions.min.js' %}"></script>
+    <script src="{% static 'main/assets/global/plugins/jquery-inputmask/inputmask/inputmask.regex.extensions.min.js' %}"></script>
+{% endblock %}
+
+{% block script_level %}
+    <script>
+        $(document).ready(function () {
+            var validate = function (id, valid) {
+                var selector = $('#' + id).parents('.form-group');
+                var v = selector.find('.validate');
+
+                if (valid) {
+                    selector.addClass('has-success').removeClass('has-error');
+                    v.removeClass('fa-close').removeClass('font-red-thunderbird').addClass('fa-check').addClass('font-green-jungle');
+                } else {
+                    selector.addClass('has-error').removeClass('has-success');
+                    v.removeClass('fa-check').removeClass('font-green-jungle').addClass('fa-close').addClass('font-red-thunderbird');
+                }
+            };
+            $('#id_departure_date').datetimepicker({
+                format: 'yyyy-mm-dd hh:ii',
+                startDate: '-1d',
+                endDate: '+1m',
+                autoclose: true,
+                todayBtn: true,
+                language: 'es'
+            }).inputmask('y-m-d h:s', {
+                "onincomplete": function () {
+                    validate('id_departure_date', true);
+                },
+                "oncomplete": function () {
+                    validate('id_departure_date', true);
+                },
+                "oncleared": function () {
+                    validate('id_departure_date', true);
+                }
+            });
+            $('#id_arrival_date').datetimepicker({
+                format: 'yyyy-mm-dd hh:ii',
+                startDate: '-1d',
+                endDate: '+1m',
+                autoclose: true,
+                todayBtn: true,
+                language: 'es'
+            }).inputmask('9999-99-99 99:99', {
+                "onincomplete": function () {
+                    validate('id_arrival_date', true);
+                },
+                "oncomplete": function () {
+                    validate('id_arrival_date', true);
+                },
+                "oncleared": function () {
+                    validate('id_arrival_date', true);
+                }
+            });
+
+            $('#id_origin').inputmask("Regex", {
+                "regex": "[A-Za-z]+|[A-Za-z]+\\s[A-Za-z]+",
+                "onincomplete": function () {
+                    validate('id_origin', false);
+                },
+                "oncomplete": function () {
+                    validate('id_origin', true);
+                },
+                "oncleared": function () {
+                    validate('id_origin', true);
+                }
+            });
+            $('#id_destination').inputmask("Regex", {
+                "regex": "[A-Za-z]+|[A-Za-z]+\\s[A-Za-z]+",
+                "onincomplete": function () {
+                    validate('id_destination', false);
+                },
+                "oncomplete": function () {
+                    validate('id_destination', true);
+                },
+                "oncleared": function () {
+                    validate('id_destination', true);
+                }
+            });
+        });
+    </script>
+{% endblock %}

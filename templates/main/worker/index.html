@@ -1,0 +1,80 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Trabajadores
+{% endblock %}
+
+{% block content %}
+<div class="page-content-inner">
+    <div class="portlet light">
+        <div class="portlet-title">
+            <div class="caption">
+                <span class="caption-subject bold uppercase">Trabajadores</span>
+            </div>
+            <div class="actions">
+                <a href="{% url 'main_worker_create' %}" class="btn green-jungle">
+                    <span class="fa fa-plus"></span>
+                    Nuevo
+                </a>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
+                        <th>Fecha de Nacimiento</th>
+                        <th>Tipo de Licencia</th>
+                        <th>Licencia</th>
+                        <th>Cargo</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for object in object_list %}
+                    <tr>
+                        <td>
+                            {{ object.id }}
+                        </td>
+                        <td>
+                            {{ object.first_name }}
+                        </td>
+                        <td>
+                            {{ object.last_name }}
+                        </td>
+                        <td>
+                            {{ object.birthday|date:"d-M-Y" }}
+                        </td>
+                        <td>
+                            {{ object.license_type.name }}
+                        </td>
+                        <td>
+                            {{ object.license }}
+                        </td>
+                        <td>
+                            {{ object.charge.name }}
+                        </td>
+                        <td>
+                            <a href="{% url 'main_worker_update' object.id %}" class="btn blue-soft">
+                                <span class="fa fa-edit">
+                                </span>
+                                Editar
+                            </a>
+                            <a href="{% url 'main_worker_delete' object.id %}" class="btn red-flamingo">
+                                <span class="fa fa-trash">
+                                </span>
+                                Eliminar
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

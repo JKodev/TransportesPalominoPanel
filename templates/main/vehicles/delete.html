@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Eliminar Vehículo
+{% endblock %}
+
+{% block content %}
+    <div class="page-content-inner">
+        <div class="portlet light">
+            <div class="portlet-title">
+                <div class="caption">
+                    <span class="caption-subject bold uppercase">Eliminar Vehículo</span>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <p>¿Está seguro que desea eliminar al vehículo de placa: <span class="uppercase bold">"{{ object.plaque }}"</span>?</p>
+                    <button type="submit" class="btn red-thunderbird">
+                        <span class="fa fa-trash"></span>
+                        Eliminar
+                    </button>
+                    <a href="{% url 'main_worker_list' %}" class="btn default">
+                        Cancelar
+                    </a>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

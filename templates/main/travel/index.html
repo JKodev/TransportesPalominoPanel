@@ -1,0 +1,80 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Viajes
+{% endblock %}
+
+{% block content %}
+<div class="page-content-inner">
+    <div class="portlet light">
+        <div class="portlet-title">
+            <div class="caption">
+                <span class="caption-subject bold uppercase">Viajes</span>
+            </div>
+            <div class="actions">
+                <a href="{% url 'main_travel_create' %}" class="btn green-jungle">
+                    <span class="fa fa-plus"></span>
+                    Nuevo
+                </a>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>Origen</th>
+                        <th>Destino</th>
+                        <th>Vehículo</th>
+                        <th>Conductor</th>
+                        <th>Fecha de Partida</th>
+                        <th>Fecha de Llegada</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for object in object_list %}
+                    <tr>
+                        <td>
+                            {{ object.id }}
+                        </td>
+                        <td>
+                            {{ object.origin.name }}
+                        </td>
+                        <td>
+                            {{ object.destination.name }}
+                        </td>
+                        <td>
+                            {{ object.driver.first_name }} {{ object.driver.last_name }}
+                        </td>
+                        <td>
+                            {{ object.vehicle.plaque }}
+                        </td>
+                        <td>
+                            {{ object.departure_date }}
+                        </td>
+                        <td>
+                            {{ object.arrival_date }}
+                        </td>
+                        <td>
+                            <a href="{% url 'main_travel_update' object.id %}" class="btn blue-soft">
+                                <span class="fa fa-edit">
+                                </span>
+                                Editar
+                            </a>
+                            <a href="{% url 'main_travel_delete' object.id %}" class="btn red-flamingo">
+                                <span class="fa fa-trash">
+                                </span>
+                                Eliminar
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

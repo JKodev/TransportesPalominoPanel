@@ -1,0 +1,243 @@
+{% load static %}
+
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+    <!--<![endif]-->
+    <!-- BEGIN HEAD -->
+    <head>
+        <meta charset="utf-8" />
+        <title>Transportes Palomino</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <meta content="Sistema de Control de la empresa Transportes Palomino" name="description" />
+        <meta content="Noelia Amesquita" name="author" />
+        <!-- BEGIN GLOBAL MANDATORY STYLES -->
+        {% block style_base %}
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
+        <link href="{% static 'main/assets/global/plugins/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'main/assets/global/plugins/simple-line-icons/simple-line-icons.min.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'main/assets/global/plugins/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'main/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css' %}" rel="stylesheet" type="text/css" />
+        {% endblock %}
+        <!-- END GLOBAL MANDATORY STYLES -->
+        <!-- BEGIN THEME GLOBAL STYLES -->
+        {% block style_theme %}
+        <link href="{% static 'main/assets/global/css/components-md.min.css' %}" rel="stylesheet" id="style_components" type="text/css" />
+        <link href="{% static 'main/assets/global/css/plugins-md.min.css' %}" rel="stylesheet" type="text/css" />
+        {% endblock %}
+        <!-- END THEME GLOBAL STYLES -->
+        <!-- BEGIN EXTRA COMPONENTS STYLES -->
+        {% block style_components %}
+        
+        {% endblock %}
+        <!-- END EXTRA COMPONENTS STYLES -->
+        <!-- BEGIN THEME LAYOUT STYLES -->
+        {% block style_layout %}
+        <link href="{% static 'main/assets/layouts/layout3/css/layout.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'main/assets/layouts/layout3/css/themes/default.min.css' %}" rel="stylesheet" type="text/css" id="style_color" />
+        <link href="{% static 'main/assets/layouts/layout3/css/custom.min.css' %}" rel="stylesheet" type="text/css" />
+        {% endblock %}
+        <!-- END THEME LAYOUT STYLES -->
+        <link rel="shortcut icon" href="favicon.ico" /> </head>
+    <!-- END HEAD -->
+
+    <body class="page-container-bg-solid page-md">
+        <div class="page-wrapper">
+            <div class="page-wrapper-row">
+                <div class="page-wrapper-top">
+                    <!-- BEGIN HEADER -->
+                    <div class="page-header">
+                        <!-- BEGIN HEADER TOP -->
+                        <div class="page-header-top">
+                            <div class="container">
+                                <!-- BEGIN LOGO -->
+                                <div class="page-logo">
+                                    <a href="{% url 'main_dashboard' %}">
+                                        <img src="{% static 'main/assets/apps/img/logo.jpg' %}" alt="logo" class="logo-default">
+                                    </a>
+                                </div>
+                                <!-- END LOGO -->
+                                <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+                                <a href="javascript:;" class="menu-toggler"></a>
+                                <!-- END RESPONSIVE MENU TOGGLER -->
+                                <!-- BEGIN TOP NAVIGATION MENU -->
+                                <div class="top-menu">
+                                    <ul class="nav navbar-nav pull-right">
+                                        {% block navbar_buttons %}
+                                        
+                                        {% endblock %}
+                                        <li class="droddown dropdown-separator">
+                                            <span class="separator"></span>
+                                        </li>
+                                        <!-- BEGIN USER LOGIN DROPDOWN -->
+                                        <li class="dropdown dropdown-user dropdown-dark">
+                                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                                <span class="username username-hide-mobile">{{ user.username }}</span>
+                                            </a>
+                                            <ul class="dropdown-menu dropdown-menu-default">
+                                                <li class="divider"> </li>
+                                                <li>
+                                                    <a href="{% url 'logout' %}">
+                                                        <i class="icon-key"></i> Desconectarse </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <!-- END USER LOGIN DROPDOWN -->
+                                    </ul>
+                                </div>
+                                <!-- END TOP NAVIGATION MENU -->
+                            </div>
+                        </div>
+                        <!-- END HEADER TOP -->
+                        <!-- BEGIN HEADER MENU -->
+                        <div class="page-header-menu">
+                            <div class="container">
+                                <!-- BEGIN MEGA MENU -->
+                                <!-- DOC: Apply "hor-menu-light" class after the "hor-menu" class below to have a horizontal menu with white background -->
+                                <!-- DOC: Remove data-hover="dropdown" and data-close-others="true" attributes below to disable the dropdown opening on mouse hover -->
+                                <div class="hor-menu  ">
+                                    <ul class="nav navbar-nav">
+                                        <li class=" ">
+                                            <a href="{% url 'init_dashboard' %}">
+                                                Principal
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="{% url 'main_worker_list' %}">
+                                                Trabajadores
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="{% url 'main_vehicle_list' %}">
+                                                Vehículos
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="{% url 'main_travel_list' %}">
+                                                Viajes
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- END MEGA MENU -->
+                            </div>
+                        </div>
+                        <!-- END HEADER MENU -->
+                    </div>
+                    <!-- END HEADER -->
+                </div>
+            </div>
+            <div class="page-wrapper-row full-height">
+                <div class="page-wrapper-middle">
+                    <!-- BEGIN CONTAINER -->
+                    <div class="page-container">
+                        <!-- BEGIN CONTENT -->
+                        <div class="page-content-wrapper">
+                            <!-- BEGIN CONTENT BODY -->
+                            <!-- BEGIN PAGE HEAD-->
+                            <div class="page-head">
+                                <div class="container">
+                                    <!-- BEGIN PAGE TITLE -->
+                                    <div class="page-title">
+                                        <h1>{% block title %}
+
+                                        {% endblock %} </h1>
+                                    </div>
+                                    <!-- END PAGE TITLE -->
+                                    <!-- BEGIN PAGE TOOLBAR -->
+                                    <div class="page-toolbar">
+                                        {% block toolbar_buttons %}
+                                        
+                                        {% endblock %}
+                                    </div>
+                                    <!-- END PAGE TOOLBAR -->
+                                </div>
+                            </div>
+                            <!-- END PAGE HEAD-->
+                            <!-- BEGIN PAGE CONTENT BODY -->
+                            <div class="page-content">
+                                <div class="container">
+                                    <!-- BEGIN PAGE CONTENT INNER -->
+                                    {% block content %}
+                                    <div class="page-content-inner">
+                                        <div class="note note-info">
+                                            <p> </p>
+                                        </div>
+                                    </div>
+                                    {% endblock %}
+
+                                    <!-- END PAGE CONTENT INNER -->
+                                </div>
+                            </div>
+                            <!-- END PAGE CONTENT BODY -->
+                            <!-- END CONTENT BODY -->
+                        </div>
+                        <!-- END CONTENT -->
+                    </div>
+                    <!-- END CONTAINER -->
+                </div>
+            </div>
+            <div class="page-wrapper-row">
+                <div class="page-wrapper-bottom">
+                    <!-- BEGIN FOOTER -->
+                    <!-- BEGIN INNER FOOTER -->
+                    <div class="page-footer">
+                        <div class="container">
+
+                        </div>
+                    </div>
+                    <div class="scroll-to-top">
+                        <i class="icon-arrow-up"></i>
+                    </div>
+                    <!-- END INNER FOOTER -->
+                    <!-- END FOOTER -->
+                </div>
+            </div>
+        </div>
+
+        <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+
+        <!--[if lt IE 9]>
+        <script src="{% static 'main/assets/global/plugins/respond.min.js' %}"></script>
+        <script src="{% static 'main/assets/global/plugins/excanvas.min.js' %}"></script>
+        <![endif]-->
+        <!-- BEGIN CORE PLUGINS -->
+        {% block script_base %}
+        <script src="{% static 'main/assets/global/plugins/jquery.min.js' %}" type="text/javascript"></script>
+        <script src="{% static 'main/assets/global/plugins/bootstrap/js/bootstrap.min.js' %}" type="text/javascript"></script>
+        <script src="{% static 'main/assets/global/plugins/js.cookie.min.js' %}" type="text/javascript"></script>
+        <script src="{% static 'main/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js' %}" type="text/javascript"></script>
+        <script src="{% static 'main/assets/global/plugins/jquery.blockui.min.js' %}" type="text/javascript"></script>
+        <script src="{% static 'main/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js' %}" type="text/javascript"></script>
+        {% endblock %}
+        <!-- END CORE PLUGINS -->
+        <!-- BEGIN COMPONENTS SCRIPTS -->
+        {% block script_components %}
+
+        {% endblock %}
+        <!-- END COMPONENTS SCRIPTSS -->
+        <!-- BEGIN THEME GLOBAL SCRIPTS -->
+        {% block script_theme %}
+        <script src="{% static 'main/assets/global/scripts/app.min.js' %}" type="text/javascript"></script>
+        {% endblock %}
+        <!-- END THEME GLOBAL SCRIPTS -->
+        <!-- BEGIN LEVEL SCRIPTS -->
+        {% block script_level %}
+
+        {% endblock %}
+        <!-- END LEVEL SCRIPTS -->
+        <!-- BEGIN THEME LAYOUT SCRIPTS -->
+        {% block script_layout %}
+        <script src="{% static 'main/assets/layouts/layout3/scripts/layout.min.js' %}" type="text/javascript"></script>
+        <script src="{% static 'main/assets/layouts/layout3/scripts/demo.min.js' %}" type="text/javascript"></script>
+        <script src="{% static 'main/assets/layouts/global/scripts/quick-sidebar.min.js' %}" type="text/javascript"></script>
+        {% endblock %}
+        <!-- END THEME LAYOUT SCRIPTS -->
+        <script>if (window.module) module = window.module;</script>
+
+    </body>
+
+</html>
