@@ -81,3 +81,15 @@ class Travel(models.Model):
 
     class Meta:
         verbose_name = "Viaje"
+
+
+class Incidents(models.Model):
+    when = models.DateTimeField(auto_now_add=True)
+    latitude = models.CharField("Latitud", max_length=20, blank=False, null=True)
+    longitude = models.CharField("Longitud", max_length=20, blank=False, null=True)
+    message = models.CharField("Mensaje", max_length=200, blank=False, null=True)
+    driver = models.ForeignKey(Person, related_name='incident_person', null=True)
+    vehicle = models.ForeignKey(Vehicle, related_name='incident_vehicle', null=True)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
