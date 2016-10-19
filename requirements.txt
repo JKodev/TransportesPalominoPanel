@@ -1,1 +1,7 @@
-Django==1.10.1
+Django
+django-filter
+djangorestframework
+freeze
+Markdown
+six
+twilio

@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from main.models import Person, Charge, LicenseType, Travel, Vehicle, City
+from main.models import Person, Charge, LicenseType, Travel, Vehicle, City, Incidents
 
 
 @admin.register(Charge)
@@ -31,3 +31,8 @@ class VehicleAdmin(admin.ModelAdmin):
 @admin.register(Person)
 class PersonAdmin(admin.ModelAdmin):
     exclude = ('password', 'last_login', 'groups', 'is_staff', 'is_active', 'date_joined', 'objects', 'is_superuser', 'user_permissions')
+
+
+@admin.register(Incidents)
+class IncidentsAdmin(admin.ModelAdmin):
+    pass

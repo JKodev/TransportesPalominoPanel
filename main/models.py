@@ -36,7 +36,7 @@ class LicenseType(models.Model):
 
 
 class Person(User):
-    birthday = models.DateField("Cumpleaños", blank=False)
+    birthday = models.DateField("Cumpleanos", blank=False)
     document = models.CharField("DNI", max_length=8, null=False, blank=False)
     charge = models.ForeignKey(Charge, related_name="Person_Charge")
     license_type = models.ForeignKey(LicenseType, related_name="Person_LicenseType")
@@ -59,13 +59,13 @@ class Vehicle(models.Model):
     plaque = models.CharField("Placa", max_length=8,  blank=False, null=False)
     model = models.CharField("Modelo", max_length=22, blank=False, null=False)
     mark = models.CharField("Marca", max_length=32, blank=False, null=False)
-    year = models.IntegerField("Año", blank=False, null=False)
+    year = models.IntegerField("Ano", blank=False, null=False)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
-        verbose_name = "Vehículo"
+        verbose_name = "Vehiculo"
 
 
 class Travel(models.Model):

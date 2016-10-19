@@ -160,7 +160,7 @@ def login_view(request):
                 # Redireccionar informando que la cuenta esta inactiva
                 # Lo dejo como ejercicio al lector :)
                 pass
-        mensaje = 'Nombre de usuario o contraseña no valido'
+        mensaje = 'Nombre de usuario o contrasena no valido'
     return render(request, 'main/login/login.html', {'mensaje': mensaje})
 
 

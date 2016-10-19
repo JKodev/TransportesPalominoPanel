@@ -37,8 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'main'
 ]
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -125,3 +131,8 @@ STATIC_URL = '/static/'
 DATE_INPUT_FORMATS = ('%d-%m-%Y', '%d/%m/%Y', '%Y-%m-%d')
 
 LOGIN_REDIRECT_URL = '/'
+
+TWILIO_ACCOUNT_SID = 'ACc7d110f63b282071832cd557123866e0'
+TWILIO_TOKEN = '9dd0331eff16fc91c09d69db6c4c0f5f'
+TWILIO_PHONE_NUMBER = '+12056493096'
+TWILIO_PHONE_INSPECTOR = '+51951704068'
