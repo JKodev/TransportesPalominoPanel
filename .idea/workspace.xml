@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="71b0e8f5-e262-460e-9646-4f282ac9c34e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/migrations/0007_auto_20161011_1906.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Transportes.iws" />
@@ -591,7 +590,14 @@
       <option name="project" value="LOCAL" />
       <updated>1476845059675</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Update migrations">
+      <created>1476934804190</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1476934804190</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TodoView">
@@ -663,7 +669,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Integrated with Twilio SMS" />
     <MESSAGE value="Update number" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update number" />
+    <MESSAGE value="Update migrations" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update migrations" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
