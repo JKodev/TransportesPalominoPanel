@@ -3,3 +3,4 @@
 staticfiles/
 .env
 db.sqlite3
+Transportes/staticfiles/
