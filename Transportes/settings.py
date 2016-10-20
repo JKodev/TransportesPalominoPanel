@@ -133,6 +133,10 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT = 'static'
 
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
 DATE_INPUT_FORMATS = ('%d-%m-%Y', '%d/%m/%Y', '%Y-%m-%d')
 
 LOGIN_REDIRECT_URL = '/'
