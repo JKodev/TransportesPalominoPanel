@@ -1,7 +1,15 @@
 Django
 django-filter
+django-toolbelt
 djangorestframework
 freeze
 Markdown
 six
 twilio
+zeep
+dj-database-url
+dj-static
+gunicorn
+Pillow
+psycopg2
+static3
