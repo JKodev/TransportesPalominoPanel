@@ -20,7 +20,7 @@ from django.contrib.auth import views as auth_views
 import main
 from main.forms import LoginForm
 from main.views import dashboard, WorkerList, WorkerCreate, WorkerUpdate, WorkerDelete, VehicleList, VehicleCreate, \
-    VehicleUpdate, VehicleDelete, TravelList, TravelCreate, TravelUpdate, TravelDelete
+    VehicleUpdate, VehicleDelete, TravelList, TravelCreate, TravelUpdate, TravelDelete, IncidentsList
 
 urlpatterns = [
     url(r'^$', dashboard, name='init_dashboard'),
@@ -46,6 +46,8 @@ urlpatterns = [
     url(r'^travel/create/$', TravelCreate.as_view(), name='main_travel_create'),
     url(r'^travel/update/(?P<pk>[\w-]+)$', TravelUpdate.as_view(), name='main_travel_update'),
     url(r'^travel/delete/(?P<pk>[\w-]+)$', TravelDelete.as_view(), name='main_travel_delete'),
+
+    url(r'^incidents/$', IncidentsList.as_view(), name='main_incidents_list'),
 
     url(r'^login/$', auth_views.login, {'template_name': 'main/login/login.html'}),
     url(r'^logout/$', auth_views.logout, {'next_page': '/login/'}, name='logout'),

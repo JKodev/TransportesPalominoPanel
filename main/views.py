@@ -10,7 +10,7 @@ from django.views.generic import ListView
 from django.views.generic import UpdateView
 
 from main.forms import PersonForm, VehicleForm, TravelForm
-from main.models import Person, Charge, Vehicle, Travel
+from main.models import Person, Charge, Vehicle, Travel, Incidents
 
 
 @login_required(login_url='/login/')
@@ -167,3 +167,12 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect('/login/')
+
+
+class IncidentsList(ListView):
+    model = Incidents
+    template_name = 'main/incident/index.html'
+
+    @method_decorator(login_required(login_url='/login/'))
+    def dispatch(self, request, *args, **kwargs):
+        return super(IncidentsList, self).dispatch(request, *args, **kwargs)

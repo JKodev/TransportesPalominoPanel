@@ -120,6 +120,11 @@
                                                 Viajes
                                             </a>
                                         </li>
+                                        <li class=" ">
+                                            <a href="{% url 'main_incidents_list' %}">
+                                                Incidentes
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div>
                                 <!-- END MEGA MENU -->
@@ -237,6 +242,10 @@
         {% endblock %}
         <!-- END THEME LAYOUT SCRIPTS -->
         <script>if (window.module) module = window.module;</script>
+        {% block script_custom %}
+        <script>
+        </script>
+        {% endblock %}
 
     </body>
 
