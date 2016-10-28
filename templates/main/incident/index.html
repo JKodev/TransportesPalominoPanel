@@ -44,7 +44,9 @@
                                     {{ object.vehicle.plaque }}
                                 </td>
                                 <td>
-                                    <a href="#" class="btn green-jungle"  data-toggle="modal" data-target="#myModal">
+                                    <a href="#" class="btn green-jungle" data-toggle="modal" data-target="#myModal"
+                                       data-lat="{{ object.latitude }}" data-lng="{{ object.longitude }}"
+                                       data-message="{{ object.message }}">
                                         <span class="fa fa-map-maker"></span>
                                         Ver Ubicación
                                     </a>
@@ -67,7 +69,7 @@
                     <h4 class="modal-title" id="myModalLabel">Mapa</h4>
                 </div>
                 <div class="modal-body">
-                    <div id="map" style="height: 300px"></div>
+                    <div id="map" style="height: 300px; width: 100%"></div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -80,12 +82,14 @@
 {% block script_custom %}
     <script>
         var map;
+        var markers = [];
         function initMap() {
             map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 4,
+                //center: {lat: -34.397, lng: 150.644},
+                zoom: 12,
                 center: {
-                    lat:-16.409739933377747,
-                    lng:-71.5704345703125
+                    lat: -16.409739933377747,
+                    lng: -71.5704345703125
                 }
             });
         }
@@ -99,17 +103,47 @@
                 map: map,
                 title: message
             });
+            markers.push(marker);
         }
 
-        $(document).ready(function () {
-            $('.see-btn').click(function (event) {
-                var lat = $(this).data('lat');
-                var lng = $(this).data('lng');
-                var message = $(this).data('message');
-                setMarker(lat, lng, message);
+        // Sets the map on all markers in the array.
+        function setMapOnAll(map) {
+            for (var i = 0; i < markers.length; i++) {
+                markers[i].setMap(map);
+            }
+        }
+
+        // Removes the markers from the map, but keeps them in the array.
+        function clearMarkers() {
+            setMapOnAll(null);
+        }
+
+        // Shows any markers currently in the array.
+        function showMarkers() {
+            setMapOnAll(map);
+        }
+
+        // Deletes all markers in the array by removing references to them.
+        function deleteMarkers() {
+            clearMarkers();
+            markers = [];
+        }
+        $("#myModal").on("shown.bs.modal", function (e) {
+            google.maps.event.trigger(map, "resize");
+
+            var button = e.relatedTarget.dataset;
+            var latitude = parseFloat(button.lat);
+            var longitude = parseFloat(button.lng);
+            var message = button.message;
+            map.setCenter({
+                lat: latitude,
+                lng: longitude
             });
+
+            deleteMarkers();
+            setMarker(latitude, longitude, message);
         });
     </script>
-    <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDsJeLjJDJtTGCf4pQkdHftCL6F8RLxHCo&signed_in=true&libraries=drawing&callback=initMap"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDsJeLjJDJtTGCf4pQkdHftCL6F8RLxHCo&callback=initMap"
+            async defer></script>
 {% endblock %}
